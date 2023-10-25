@@ -91,12 +91,12 @@ initContainers:
   #   volumeMounts:
   #     - mountPath: /target
   #       name: plugins
-  # - name: velero-plugin-for-aws
-  #   image: velero/velero-plugin-for-aws:v1.8.0
-  #   imagePullPolicy: IfNotPresent
-  #   volumeMounts:
-  #     - mountPath: /target
-  #       name: plugins
+  - name: velero-plugin-for-aws
+    image: velero/velero-plugin-for-aws:v1.8.0
+    imagePullPolicy: IfNotPresent
+    volumeMounts:
+      - mountPath: /target
+        name: plugins
 
 # SecurityContext to use for the Velero deployment. Optional.
 # Set fsGroup for `AWS IAM Roles for Service Accounts`
@@ -487,10 +487,10 @@ credentials:
 # Whether to create backupstoragelocation crd, if false => do not create a default backup location
 backupsEnabled: true
 # Whether to create volumesnapshotlocation crd, if false => disable snapshot feature
-snapshotsEnabled: true
+snapshotsEnabled: false
 
 # Whether to deploy the node-agent daemonset.
-deployNodeAgent: false
+deployNodeAgent: true
 
 nodeAgent:
   podVolumePath: /var/lib/kubelet/pods
