@@ -9,12 +9,12 @@ dependencies:
 - alias: grafana-agent-operator
   condition: metaMonitoring.grafanaAgent.installOperator
   name: grafana-agent-operator
-  repository: https://grafana.github.io/helm-charts
+  repository: https://ketches.github.io/ketches-extension-charts
   version: 0.2.2
 - alias: rollout_operator
   condition: rollout_operator.enabled
   name: rollout-operator
-  repository: https://grafana.github.io/helm-charts
+  repository: https://ketches.github.io/ketches-extension-charts
   version: 0.15.0
 description: Grafana Tempo in MicroService mode
 home: https://grafana.com/docs/tempo/latest/

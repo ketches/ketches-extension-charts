@@ -15,7 +15,7 @@ dependencies:
   repository: https://charts.bitnami.com/bitnami
   version: 16.13.2
 - name: grafana
-  repository: https://grafana.github.io/helm-charts
+  repository: https://ketches.github.io/ketches-extension-charts
   version: 6.57.1
 - name: ingress-nginx
   repository: https://kubernetes.github.io/ingress-nginx

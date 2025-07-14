@@ -23,7 +23,7 @@ dependencies:
   version: 16.13.2
 - condition: grafana.enabled
   name: grafana
-  repository: https://grafana.github.io/helm-charts
+  repository: https://ketches.github.io/ketches-extension-charts
   version: 6.57.1
 - condition: ingress-nginx.enabled
   name: ingress-nginx
