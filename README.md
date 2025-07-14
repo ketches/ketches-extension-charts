@@ -23,9 +23,21 @@ Replace `<chart-name>` with the name of the chart you want to install.
 
 Here are the charts available in this repository:
 
+### Envoy Gateway
+
+* **Description**: A Helm chart for Envoy Gateway, an open source implementation of the Gateway API.
+* **Chart Version**: `1.4.2`
+* **App Version**: `1.4.2`
+
+To install the Envoy Gateway chart, run:
+
+```bash
+helm install my-envoy-gateway ketches-extension-charts/envoy-gateway
+```
+
 ### LGTM Distributed
 
-* **Description**: An umbrella chart for a distributed stack of Loki, Grafana, Tempo, and Mimir. This chart simplifies the deployment of a comprehensive observability platform.
+* **Description**: An umbrella chart for a distributed stack of Loki, Grafana, Tempo, Mimir and Grafana OnCall. This chart simplifies the deployment of a comprehensive observability platform.
 * **Chart Version**: `2.1.0`
 * **App Version**: `^7.3.9`
 
