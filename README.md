@@ -1,97 +1,52 @@
-# ketches-extension-charts
+# Ketches Extension Charts
 
-Install charts in this repository as Ketches Extensions.
+This repository contains a collection of Helm charts for extending the functionality of your Kubernetes cluster.
 
-Requirements:
+## Usage
 
-- Ketches installed in the cluster(CRDs and controller)
-- Cluster resource created
-
-Step 0: Get the target Ketches cluster
+To use the charts from this repository, add the repository to your Helm client:
 
 ```bash
-kubectl get clusters.core.ketches.io
+helm repo add ketches-extension-charts https://ketches.github.io/ketches-extension-charts
+helm repo update
 ```
 
-Step 1: Install the Ketches HelmRepository CRD
-
-Example(ketches cluster is dev, so the space is ketches-admin-dev):
+You can then install any of the charts by running:
 
 ```bash
-kubectl apply -f - <<EOF
-apiVersion: core.ketches.io/v1alpha1
-kind: HelmRepository
-metadata:
-  name: ketches-extension
-  namespace: ketches-admin-dev
-  labels:
-    ketches.io/owned: "true"
-    ketches.io/space: ketches-admin-dev
-    ketches.io/helm-repository: ketches-extension
-spec:
-  displayName: Ketches Extension Helm Repository
-  description: Ketches Extension Helm Repository, maintained by the Ketches community, contains a wealth of Ketches Extensions.
-  url: https://ketches.github.io/ketches-extension-charts
-EOF
+helm install my-release ketches-extension-charts/<chart-name>
 ```
 
-Step 2: Install the extension
+Replace `<chart-name>` with the name of the chart you want to install.
 
-Example(ketches cluster is dev, so the space is ketches-admin-dev):
+## Charts
+
+Here are the charts available in this repository:
+
+### LGTM Distributed
+
+* **Description**: An umbrella chart for a distributed stack of Loki, Grafana, Tempo, and Mimir. This chart simplifies the deployment of a comprehensive observability platform.
+* **Chart Version**: `2.1.0`
+* **App Version**: `^7.3.9`
+
+To install the LGTM Distributed chart, run:
 
 ```bash
-kubectl apply -f - <<EOF
-apiVersion: core.ketches.io/v1alpha1
-kind: Extension
-metadata:
-  name: velero
-  namespace: ketches-admin-dev
-  labels:
-    ketches.io/owned: "true"
-    ketches.io/space: ketches-admin-dev
-    ketches.io/extension: ketches-extension
-spec:
-  displayName: Velero
-  description: Velero is a tool to back up and restore Kubernetes cluster resources and persistent volumes.
-  installType: helm
-  helmInstallation: 
-    repository: ketches-extension
-    name: velero
-    chart: ketches-extension/velero
-EOF
+helm install my-lgtm ketches-extension-charts/lgtm-distributed
 ```
 
-Also, you can install charts in this repository with helm directly:
+### Velero
 
-[Helm](https://helm.sh) must be installed to use the charts.  Please refer to
-Helm's [documentation](https://helm.sh/docs) to get started.
+* **Description**: A Helm chart for Velero, a tool to back up and restore your Kubernetes cluster resources and persistent volumes.
+* **Chart Version**: `5.1.0`
+* **App Version**: `1.12.0`
 
-Once Helm has been set up correctly, add the repo as follows:
+To install the Velero chart, run:
 
 ```bash
-helm repo add ketches-extension https://ketches.github.io/ketches-extension-charts
+helm install my-velero ketches-extension-charts/velero
 ```
 
-If you had already added this repo earlier, update the repo as follows:
+## Contributing
 
-```bash
-helm repo update ketches-extension
-```
-
-To search for charts in this repo:
-
-```bash
-helm search repo ketches-extension
-```
-
-To install the ketches-extension chart:
-
-```bash
-helm install myapp ketches-extension/myapp
-```
-
-To uninstall the chart:
-
-```bash
-helm uninstall myapp
-```
+Contributions are welcome! Please refer to the contribution guidelines for more information.
